@@ -12,15 +12,20 @@ require_once 'core/init.php';
 //        echo $user->username;
 //    }
 //}
-$users  = DB::getInstance()->showAll('users');
-$first_user  = DB::getInstance()->second('users');
+$users  = DB::getInstance()->update('users',3, array(
+    'password'  => 'new password',
+    'name'      => 'Valon Hajredini'
+));
 
-if (!$users->count()){
-    echo "No users";
-} else {
-    foreach ($users->results() as $user){
-        echo $user->username.'<br>';
-    }
-}
-echo $first_user->username;
-echo $users->first()->username;
+//$users  = DB::getInstance()->showAll('users');
+//$first_user  = DB::getInstance()->second('users');
+//
+//if (!$users->count()){
+//    echo "No users";
+//} else {
+//    foreach ($users->results() as $user){
+//        echo $user->username.'<br>';
+//    }
+//}
+//echo $first_user->username;
+//echo $users->first()->username;
