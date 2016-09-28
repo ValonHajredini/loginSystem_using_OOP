@@ -12,4 +12,10 @@ require_once 'core/init.php';
 //        echo $user->username;
 //    }
 //}
-$db  = DB::getInstance();
+$users  = DB::getInstance()->get('users', array('username', '=', 'ekoloni'));
+
+if (!$users->count()){
+    echo "No users";
+} else {
+    echo 'Ok';
+}
