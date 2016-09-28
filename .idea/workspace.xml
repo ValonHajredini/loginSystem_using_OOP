@@ -45,13 +45,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+            <state relative-caret-position="300">
+              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
               <folding>
-                <marker date="1475079520512" expanded="true" signature="156:183" ph="SELECT usern... users" />
+                <marker date="1475081592081" expanded="true" signature="156:183" ph="SELECT usern... users" />
               </folding>
             </state>
           </provider>
@@ -67,14 +67,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DB.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DB.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/DB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
+            <state relative-caret-position="475">
+              <caret line="97" column="31" selection-start-line="97" selection-start-column="31" selection-end-line="97" selection-end-column="31" />
               <folding>
-                <marker date="1475079252603" expanded="true" signature="1849:1855" ph="SELECT * FRO... $" />
-                <marker date="1475079252603" expanded="true" signature="1849:1880" ph="SELECT * FRO... ${$table}" />
+                <marker date="1475083279521" expanded="true" signature="1849:1855" ph="SELECT * FRO... $" />
+                <marker date="1475083279521" expanded="true" signature="1849:1880" ph="SELECT * FRO... ${$table}" />
+                <marker date="1475083279521" expanded="true" signature="2412:2426" ph="SELECT * FRO... $" />
+                <marker date="1475083279521" expanded="true" signature="2412:2434" ph="SELECT * FRO... " />
               </folding>
             </state>
           </provider>
@@ -88,8 +90,10 @@
         <option value="$PROJECT_DIR$/functiones/Sanitize.php" />
         <option value="$PROJECT_DIR$/classes/Config.php" />
         <option value="$PROJECT_DIR$/core/init.php" />
-        <option value="$PROJECT_DIR$/classes/DB.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/test/Dog.php" />
+        <option value="$PROJECT_DIR$/test/Animals.php" />
+        <option value="$PROJECT_DIR$/classes/DB.php" />
       </list>
     </option>
   </component>
@@ -168,35 +172,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="functiones" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginSystem" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginSystem" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -264,12 +240,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475061451716</updated>
-      <workItem from="1475061452961" duration="11463000" />
+      <workItem from="1475061452961" duration="15198000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11463000" />
+    <option name="totallyTimeSpent" value="15198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -450,17 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/DB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
-          <folding>
-            <marker date="1475079252603" expanded="true" signature="1849:1855" ph="SELECT * FRO... $" />
-            <marker date="1475079252603" expanded="true" signature="1849:1880" ph="SELECT * FRO... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/init.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -473,10 +438,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+        <state relative-caret-position="300">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding>
-            <marker date="1475079520512" expanded="true" signature="156:183" ph="SELECT usern... users" />
+            <marker date="1475081592081" expanded="true" signature="156:183" ph="SELECT usern... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Animals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="n#Animals#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Dog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding>
+            <element signature="n#Dog#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/DB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="97" column="31" selection-start-line="97" selection-start-column="31" selection-end-line="97" selection-end-column="31" />
+          <folding>
+            <marker date="1475083279521" expanded="true" signature="1849:1855" ph="SELECT * FRO... $" />
+            <marker date="1475083279521" expanded="true" signature="1849:1880" ph="SELECT * FRO... ${$table}" />
+            <marker date="1475083279521" expanded="true" signature="2412:2426" ph="SELECT * FRO... $" />
+            <marker date="1475083279521" expanded="true" signature="2412:2434" ph="SELECT * FRO... " />
           </folding>
         </state>
       </provider>

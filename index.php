@@ -12,10 +12,15 @@ require_once 'core/init.php';
 //        echo $user->username;
 //    }
 //}
-$users  = DB::getInstance()->get('users', array('username', '=', 'ekoloni'));
+$users  = DB::getInstance()->showAll('users');
+$first_user  = DB::getInstance()->second('users');
 
 if (!$users->count()){
     echo "No users";
 } else {
-    echo 'Ok';
+    foreach ($users->results() as $user){
+        echo $user->username.'<br>';
+    }
 }
+echo $first_user->username;
+echo $users->first()->username;

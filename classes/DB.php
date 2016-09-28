@@ -73,6 +73,29 @@ class DB{
     }
     public function delete($table, $where){
         return $this->action('DELETE ', $table, $where);
+    }
+    public function results(){
+        return $this->_results;
+    }
+    public function showAll($table){
+        return $this->query("SELECT * FROM {$table}");
+    }
+    public function first(){
+            return $this->results()[0];
+    }
+    public function second(){
+
+            return $this->results()[1];
+
+    }
+    public function third(){
+            return $this->results()[2];
+    }
+    public function forth(){
+        return $this->results()[3];
+    }
+    public function fifth(){
+        return $this->results()[4];
 
     }
     public function count(){
