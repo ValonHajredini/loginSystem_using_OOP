@@ -19,7 +19,7 @@ if (Input::exists()) {
             $login = $user->login(Input::get('username'), Input::get('password'));
 
             if ($login){
-                print_r($_SESSION['user']);
+                Redirect::to('index');
             } else {
                 ?>
                 <div class="row">

@@ -9,11 +9,24 @@
 class User{
     private $_db,
             $_data,
-            $_session_name;
+            $_session_name,
+            $_isLogedIn;
 
     public function __construct($user = null){
         $this->_db = DB::getInstance();
         $this->_session_name = Config::get('session/session_name');
+        if(!$user){
+            if(Session::exists($this->_session_name)){
+                $user = Session::get($this->_session_name);
+                if($this->find($user)){
+                    $this->_isLogedIn = true;
+                }else {
+                    //Process logout
+                }
+            }
+        }else {
+            $this->find($user);
+        }
     }
     public function create($fields = array()){
         if (!$this->_db->insert('users', $fields)){
@@ -42,8 +55,11 @@ class User{
 
         return false;
     }
-    private function data(){
+    public function data(){
         return $this->_data;
-}
+    }
+    public function isLogedIn(){
+        return $this->_isLogedIn;
+    }
 
 }

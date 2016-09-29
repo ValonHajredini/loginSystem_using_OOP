@@ -25,7 +25,26 @@ if (Session::exists('success')) {
     </div>
     <?php
 }
-    echo Session::get(Config::get('session/session_name'));
+    $user = new User();
+
+
+
+if($user->isLogedIn()){
+    ?>
+    <ul>
+        <li><a href="logout.php">Logout</a></li>
+        <li><a href="profile.php">Profile</a></li>
+    </ul>
+<?php
+    echo 'Home<br>';
+    echo '<pre>';
+    echo 'Username: '.$user->data()->username;
+    echo '<br>';
+    echo 'Full Name: '.$user->data()->name;
+    echo '</pre>';
+}else {
+    echo '<h2>Hello</h2><p>You need to <a href="login.php">Login </a> or <a href="register.php">Register</a> </p>';
+}
 
 echo '<div class="/container">';
 include 'template/footer.php';

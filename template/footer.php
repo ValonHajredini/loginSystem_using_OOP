@@ -7,7 +7,8 @@
  */
 ?>
 
-<script src="assets/js/bootstrap.min.js">
+<script src="template/assets/js/jquery-3.1.1.min.js">
+<script src="template/assets/js/bootstrap.min.js">
 
 </script>
 </body>
