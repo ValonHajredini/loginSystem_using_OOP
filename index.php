@@ -6,26 +6,24 @@
  * Time: 1:26 PM
  */
 require_once 'core/init.php';
-//$users = DB::getInstance()->query('SELECT  username FROM users');
-//if ($users->count()){
-//    foreach($users as $user){
-//        echo $user->username;
-//    }
-//}
-$users  = DB::getInstance()->update('users',3, array(
-    'password'  => 'new password',
-    'name'      => 'Valon Hajredini'
-));
-
-//$users  = DB::getInstance()->showAll('users');
-//$first_user  = DB::getInstance()->second('users');
-//
-//if (!$users->count()){
-//    echo "No users";
-//} else {
-//    foreach ($users->results() as $user){
-//        echo $user->username.'<br>';
-//    }
-//}
-//echo $first_user->username;
-//echo $users->first()->username;
+echo '<div class="container">';
+include 'template/header.php';
+if (Session::exists('success')){
+    ?>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <div class="panel panel-success">
+                <div class="panel-heading"><b>Success</b>  </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <p></p>
+                    </div>
+                    <?php echo Session::flash('success') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+echo '<div class="/container">';
+include 'template/footer.php';

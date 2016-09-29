@@ -42,7 +42,9 @@ if (Input::exists()){
         )
     ));
     if($validate->passed()){
-        echo 'Validate pased';
+        Session::flash('success', 'You registerd succesfully');
+        header('Location:index.php');
+
     } else {
 //        print_r($validate->errors());
         ?>
