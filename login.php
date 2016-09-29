@@ -7,6 +7,23 @@
  */
 include 'template/header.php';
 echo '<div class="container">';
+if (Session::exists('logout')) {
+    ?>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <div class="panel panel-warning">
+                <div class="panel-heading"><b>Loged Out</b></div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <p></p>
+                    </div>
+                    <?php echo Session::flash('logout') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
