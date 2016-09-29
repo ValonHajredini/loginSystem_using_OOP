@@ -32,8 +32,11 @@ if (Input::exists()) {
             'password'          => array( 'required'    => true )
         ));
         if($validate->passed()){
+            echo '1 -> The remember is: '.Input::get('remember').'<br>';
+//            die();
+            $remember = (Input::get('remember') == 'on') ? true : false;
             $user = new User();
-            $login = $user->login(Input::get('username'), Input::get('password'));
+            $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
             if ($login){
                 Redirect::to('index');
@@ -93,9 +96,10 @@ if (Input::exists()) {
                 </div>
             </div>
             <div class="field">
-                <div class="col-md-10">
-                    <input type="checkbox" name="remember" id="remember" value="" autocomplete="off">
-                    <label for="remember" >Kep me logedIn</label>
+
+                <div class="col-md-6 col-md-offset-2">
+                    <input type="checkbox" name="remember" id="remember" value="on" >
+                    <label for="remember" >Remember me</label>
                 </div>
             </div>
             <div class="field">

@@ -8,5 +8,6 @@
 $user = new User();
 $user->logout();
 Session::put('logout', 'Succesgully loged Out');
+
 Redirect::to('login');
 die();
