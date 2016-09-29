@@ -1,4 +1,6 @@
 <?php require_once 'core/init.php';
+//var_dump();
+
 /**
  * Created by PhpStorm.
  * User: hajre
@@ -13,7 +15,9 @@ include 'template/header.php';
             <h1>Register Here</h1>
 
 <?php
+
 if (Input::exists()){
+    if(Token::check(Input::get('token'))){
     $validate = new Validate();
     $validate = $validate->check($_POST, array(
         'username'          => array(
@@ -60,8 +64,10 @@ if (Input::exists()){
                 </div>
             </div>
         <?php
+        }
     }
 }
+
 ?>
             <form action="" method="post">
                 <div class="field">
@@ -88,6 +94,7 @@ if (Input::exists()){
                         <input type="text" name="name" id="name" value="<?php echo escape(Input::get('name')); ?>" autocomplete="off">
                     </div>
                 </div>
+                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                 <div class="field">
                     <div class=" col-md-offset-2 col-md-10">
                     <input type="submit" value="Register">
