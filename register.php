@@ -12,7 +12,7 @@ include 'template/header.php';
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Register Here</h1>
+
 
 <?php
 
@@ -54,7 +54,8 @@ if (Input::exists()){
                 'group_id'  => 1
             ));
             Session::flash('success', 'You registerd succesfully');
-            header('Location:index.php');
+//            header('Location:index.php');
+            Redirect::to('index');
         } catch(Exception $e){
             die($e->getMessage());
         }
@@ -63,6 +64,7 @@ if (Input::exists()){
     } else {
 //        print_r($validate->errors());
         ?>
+
             <div class="row">
                 <div class="col-md-6 col-md-offset-1">
                     <div class="panel panel-danger">
@@ -86,6 +88,7 @@ if (Input::exists()){
 }
 
 ?>
+            <h1>Register Here</h1>
             <form action="" method="post">
                 <div class="field">
                     <label for="username" class="col-md-2">Username</label>
