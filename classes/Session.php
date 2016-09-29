@@ -33,4 +33,5 @@ class Session{
     public static function has($status){
 
     }
+
 }

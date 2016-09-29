@@ -5,3 +5,7 @@
  * Date: 9/28/2016
  * Time: 1:26 PM
  */
+$user = new User();
+$user->logout();
+Redirect::to('login');
+die();
