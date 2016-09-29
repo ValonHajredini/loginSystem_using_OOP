@@ -8,12 +8,12 @@
 require_once 'core/init.php';
 echo '<div class="container">';
 include 'template/header.php';
-if (Session::exists('success')){
+if (Session::exists('success')) {
     ?>
     <div class="row">
         <div class="col-md-6 col-md-offset-1">
             <div class="panel panel-success">
-                <div class="panel-heading"><b>Success</b>  </div>
+                <div class="panel-heading"><b>Success</b></div>
                 <div class="panel-body">
                     <div class="list-group">
                         <p></p>
@@ -25,5 +25,7 @@ if (Session::exists('success')){
     </div>
     <?php
 }
+    echo Session::get(Config::get('session/session_name'));
+
 echo '<div class="/container">';
 include 'template/footer.php';

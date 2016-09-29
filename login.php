@@ -1,7 +1,91 @@
-<?php
+<?php include_once 'core/init.php';
 /**
  * Created by PhpStorm.
  * User: hajre
  * Date: 9/28/2016
  * Time: 1:26 PM
  */
+include 'template/header.php';
+echo '<div class="container">';
+if (Input::exists()) {
+    if (Token::check(Input::get('token'))) {
+        $validate = new Validate();
+        $validate = $validate->check($_POST, array(
+            'username'          => array('required'     => true ),
+            'password'          => array( 'required'    => true )
+        ));
+        if($validate->passed()){
+            $user = new User();
+            $login = $user->login(Input::get('username'), Input::get('password'));
+
+            if ($login){
+                print_r($_SESSION['user']);
+            } else {
+                ?>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-1">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading"><b>Authentication Error</b>  </div>
+                            <div class="panel-body">
+                                <p>Sorry, the <b>username</b> or <b>password</b> is incorrect</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        }else{
+            ?>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-1">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading"><b><?php echo count($validate->errors())?></b> Errors </div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <?php
+                                foreach ($validate->errors() as $error) {
+                                    echo '<a href="#" class="list-group-item">'.$error. '</a>';
+                                }
+                                ?>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    }
+}
+?>
+
+        <h1>Login Page</h1>
+        <form action="" method="post">
+            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+            <div class="field">
+                <label for="username" class="col-md-2">Username</label>
+                <div class="col-md-10">
+                    <input type="text" name="username" id="username" value="" autocomplete="off">
+                </div>
+            </div>
+            <div class="field">
+                <label for="password" class="col-md-2">Password</label>
+                <div class="col-md-10">
+                    <input type="password" name="password" id="username" value="" autocomplete="off">
+                </div>
+            </div>
+            <div class="field">
+                <div class="col-md-10">
+                    <input type="checkbox" name="remember" id="remember" value="" autocomplete="off">
+                    <label for="remember" >Kep me logedIn</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class=" col-md-offset-2 col-md-10">
+                    <input type="submit" value="LogIn">
+                </div>
+            </div>
+        </form>
+    </div>
+<?php include 'template/footer.php'; ?>

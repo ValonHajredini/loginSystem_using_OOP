@@ -1,4 +1,4 @@
-<?php
+<?php include_once 'core/init.php';
 /**
  * Created by PhpStorm.
  * User: hajre
