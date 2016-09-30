@@ -35,14 +35,14 @@ class User{
             throw new Exception('There wos a problem creating an acount');
         }
     }
-    public function update($fields = [], $id = null){
+    public function update($fields = array(), $id = null){
         if (!$id && $this->isLogedIn()){
             $id = $this->data()->id;
         }
         if(!$this->_db->update('users', $id, $fields)){
             throw new Exception('There wos a problem updating.');
         }else {
-            Session::flash('success', 'Your datails ar updated succesfully');
+
         }
     }
     public function find($user = null){

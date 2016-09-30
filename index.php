@@ -35,6 +35,7 @@ if($user->isLogedIn()){
         <li><a href="logout">Logout</a></li>
         <li><a href="profile">Profile</a></li>
         <li><a href="update">Update Details</a></li>
+        <li><a href="changepassword">Update password</a></li>
     </ul>
 <?php
     echo 'Home<br>';

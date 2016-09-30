@@ -21,6 +21,7 @@ if (Input::exists()) {
 //            $update = $edit_user->update('users', $user->data()->id, ['name' => Input::get('name')]);
             try{
                 $user->update(['name' => Input::get('name')]);
+                Session::flash('success', 'Your datails ar updated succesfully');
                 $update = true;
             }catch (Exception $e){
                 die($e->getMessage());
