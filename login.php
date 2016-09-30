@@ -27,10 +27,10 @@ if (Session::exists('logout')) {
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
-        $validate = $validate->check($_POST, array(
-            'username'          => array('required'     => true ),
-            'password'          => array( 'required'    => true )
-        ));
+        $validate = $validate->check($_POST, [
+            'username'          => ['required'     => true ],
+            'password'          => [ 'required'    => true ]
+        ]);
         if($validate->passed()){
             echo '1 -> The remember is: '.Input::get('remember').'<br>';
 //            die();

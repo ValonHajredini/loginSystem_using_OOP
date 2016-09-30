@@ -6,22 +6,22 @@
  * Time: 1:34 PM
  */
 session_start();
-$GLOBALS['config'] = array(
-    'mysql'     => array(
+$GLOBALS['config'] = [
+    'mysql'     => [
         'host'          => '127.0.0.1',
         'username'      => 'root',
         'password'      => '',
         'db_name'       => 'loginSystem'
-    ),
-    'remember'  =>array(
+    ],
+    'remember'  =>[
         'cookie_name'   => 'hash',
         'cookie_expiry' => 604800
-    ),
-    'session'   =>array(
+    ],
+    'session'   =>[
         'session_name'  => 'user',
         'token_name'    => 'token'
-    )
-);
+    ]
+];
 spl_autoload_register(function ($class){
         require_once 'classes/'.$class.'.php';
 });

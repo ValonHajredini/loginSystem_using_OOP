@@ -8,12 +8,12 @@
  */
 class Validate {
     private $_past      = false,
-            $_errors    = array(),
+            $_errors    = [],
             $_db        = null;
     public function __construct(){
         $this->_db = DB::getInstance();
     }
-    public function check($sources, $items = array()){
+    public function check($sources, $items = []){
         foreach ($items as $item => $rules){
             foreach ($rules as $rule => $rule_value){
 //                echo "{$item} {$rule} must be {$rule_value}<br>";
@@ -39,7 +39,7 @@ class Validate {
                             }
                         break;
                         case 'unique':
-                            $check = $this->_db->get($rule_value, array($item,'=', $value));
+                            $check = $this->_db->get($rule_value, [$item,'=', $value]);
                             if ($check->count()){
                                 $this->addError("The  <b>{$item }</b> \"<b>{$value}</b>\" already egzists, the <b>{$item}</b> mast be  <b>unique</b> ");
                             }

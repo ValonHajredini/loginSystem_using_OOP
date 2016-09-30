@@ -19,40 +19,24 @@ include 'template/header.php';
 if (Input::exists()){
     if(Token::check(Input::get('token'))){
     $validate = new Validate();
-    $validate = $validate->check($_POST, array(
-        'username'          => array(
-            'required'  => true,
-            'min'       => 2,
-            'max'       => 20,
-            'unique'    => 'users'
-        ),
-        'password'          => array(
-            'required'  => true,
-            'min'       => 6
-        ),
-        'password_again'    => array(
-            'required'  => true,
-            'matches'   => 'password'
-        ),
-        'name'              => array(
-            'required'  => true,
-            'min'       => 2,
-            'max'       => 50,
-            'unique'    => 'users'
-        )
-    ));
+    $validate = $validate->check($_POST, [
+        'username'          => [ 'required' => true, 'min' => 2, 'max' => 20, 'unique' => 'users' ],
+        'password'          => [ 'required' => true, 'min' => 6 ],
+        'password_again'    => [ 'required' => true, 'matches'   => 'password' ],
+        'name'              => [ 'required'  => true, 'min' => 2, 'max' => 50, 'unique' => 'users' ]
+    ]);
     if($validate->passed()){
         $user = new User();
         $salt = Hash::salt(32);
         try{
-            $user->create(array(
+            $user->create([
                 'username'  => Input::get('username'),
                 'password'  => Hash::make(Input::get('password'),$salt),
                 'salt'      => $salt,
                 'name'      => Input::get('name'),
                 'joined'    => date('Y-m-d H:i:s'),
                 'group_id'  => 1
-            ));
+            ]);
             Session::flash('success', 'You registerd succesfully');
 //            header('Location:index.php');
             Redirect::to('index');

@@ -30,15 +30,25 @@ class User{
             $this->find($user);
         }
     }
-    public function create($fields = array()){
+    public function create($fields = []){
         if (!$this->_db->insert('users', $fields)){
             throw new Exception('There wos a problem creating an acount');
+        }
+    }
+    public function update($fields = [], $id = null){
+        if (!$id && $this->isLogedIn()){
+            $id = $this->data()->id;
+        }
+        if(!$this->_db->update('users', $id, $fields)){
+            throw new Exception('There wos a problem updating.');
+        }else {
+            Session::flash('success', 'Your datails ar updated succesfully');
         }
     }
     public function find($user = null){
         if($user){
             $field = (is_numeric($user))? 'id' : 'username';
-            $data = $this->_db->get('users', array($field , '=' , $user));
+            $data = $this->_db->get('users', [$field , '=' , $user]);
             if ($data->count()){
                 $this->_data = $data->first();
                 return true;
@@ -63,13 +73,10 @@ class User{
                         echo '3 -> ' . $this->data()->id . '<br>';
                         $id = $this->data()->id;
 
-                        $hashCheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->id));
+                        $hashCheck = $this->_db->get('users_session', ['user_id', '=', $this->data()->id]);
                         echo '4 ->' . $hashCheck->count();
                         if (!$hashCheck->count()) {
-                            $ins = $this->_db->insert('users_session', array(
-                                'user_id' => $id,
-                                'hash' => $hash
-                            ));
+                            $ins = $this->_db->insert('users_session', ['user_id' => $id, 'hash' => $hash ]);
                             echo '5 -> ' . $ins;
     //                        die();
                         } else {

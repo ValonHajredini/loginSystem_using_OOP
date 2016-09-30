@@ -30,7 +30,7 @@ class DB{
             }
             return self::$_instance;
     }
-    public function query($sql, $params = array()){
+    public function query($sql, $params = []){
         $this->_error = false;
         if ($this->_query = $this->_pdo->prepare($sql)){
             $x = 1;
@@ -52,16 +52,16 @@ class DB{
     public function error(){
         return $this->_error;
     }
-    public function action($action, $table, $where = array()){
+    public function action($action, $table, $where = []){
         if (count($where) === 3){
-            $operators = array('=', '>', '<', '>=', '<=');
+            $operators = ['=', '>', '<', '>=', '<='];
             $field      = $where[0];
             $operator   = $where[1];
             $value      = $where[2];
 
             if(in_array($operator, $operators)){
                 $sql = "{$action} FROM {$table} WHERE {$field}  {$operator}?";
-                if(!$this->query($sql, array($value))->error()){
+                if(!$this->query($sql, [$value])->error()){
                     return $this;
                 }
             }
@@ -74,7 +74,7 @@ class DB{
     public function delete($table, $where){
         return $this->action('DELETE ', $table, $where);
     }
-    public function insert($table, $fields = array()){
+    public function insert($table, $fields = []){
        $keys = array_keys($fields);
         $values = '';
         $x = 1;
@@ -91,7 +91,7 @@ class DB{
         }
         return false;
     }
-    public function update($table, $id, $fields = array()){
+    public function update($table, $id, $fields = []){
         $set = '';
         $x = 1;
         foreach($fields as $name => $value){
@@ -104,6 +104,7 @@ class DB{
 
         $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
         if(!$this->query($sql, $fields)->error()){
+
             return true;
         }
         return false;

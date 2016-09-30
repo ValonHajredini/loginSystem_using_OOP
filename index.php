@@ -32,8 +32,9 @@ if (Session::exists('success')) {
 if($user->isLogedIn()){
     ?>
     <ul>
-        <li><a href="logout.php">Logout</a></li>
-        <li><a href="profile.php">Profile</a></li>
+        <li><a href="logout">Logout</a></li>
+        <li><a href="profile">Profile</a></li>
+        <li><a href="update">Update Details</a></li>
     </ul>
 <?php
     echo 'Home<br>';
@@ -43,7 +44,7 @@ if($user->isLogedIn()){
     echo 'Full Name: '.$user->data()->name;
     echo '</pre>';
 }else {
-    echo '<h2>Hello</h2><p>You need to <a href="login.php">Login </a> or <a href="register.php">Register</a> </p>';
+    echo '<h2>Hello</h2><p>You need to <a href="login.php">Login </a> or <a href="register.php">Register</a> <p';
 }
 
 echo '<div class="/container">';
