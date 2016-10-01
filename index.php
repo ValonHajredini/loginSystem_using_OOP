@@ -33,18 +33,19 @@ if($user->isLogedIn()){
     ?>
     <ul>
         <li><a href="logout">Logout</a></li>
-        <li><a href="profile">Profile</a></li>
+        <li><a href="profile?user=<?php echo escape($user->data()->username )?>">Profile</a></li>
         <li><a href="update">Update Details</a></li>
         <li><a href="changepassword">Update password</a></li>
     </ul>
 
 <?php
+
     if ($user->hasPermission('admin')){
         echo '<p>You are admin</p>';
     }
     echo 'Home<br>';
     echo '<pre>';
-    echo 'Username: '.$user->data()->username;
+    echo '<a href="profile?user='.escape($user->data()->username ).'"> '.$user->data()->username.'</a>';
     echo '<br>';
     echo 'Full Name: '.$user->data()->name;
     echo '</pre>';
