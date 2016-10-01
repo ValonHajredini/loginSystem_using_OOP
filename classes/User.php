@@ -35,7 +35,7 @@ class User{
             throw new Exception('There wos a problem creating an acount');
         }
     }
-    public function update($fields = array(), $id = null){
+    public function update($fields = [], $id = null){
         if (!$id && $this->isLogedIn()){
             $id = $this->data()->id;
         }
@@ -100,6 +100,17 @@ class User{
         $this->_db->delete('users_session', ['user_id', '=', $this->data()->id]);
         Session::delete($this->_session_name);
         Cookie::delete($this->_cookieName);
+    }
+    public  function hasPermission($key){
+        $group = $this->_db->get('groups', ['id', '=', $this->data()->group_id]);
+        if ($group->count()){
+            $permitions = json_decode($group->first()->permissins, true);
+            if($permitions[$key] == true){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
     public function exists(){
         return (!empty($this->_data)) ? true : false;
