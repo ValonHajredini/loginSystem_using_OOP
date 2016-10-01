@@ -7,14 +7,22 @@
  * Time: 1:30 PM
  */
 class DB{
+//    This variable is used for instantiating the class DB and
+//     creating a connection on the database
     private static $_instance   = null;
-    private
-        $_pdo ,
-        $_query,
-        $_error     = false,
-        $_results,
-        $_count     = 0;
 
+    private
+        //      _pdo is used to create an PDO object for the database
+        $_pdo ,
+        //      _query contains the formatted query
+        $_query,
+        //       _error determines when is an error, when yes then make _errors value = true
+        $_error     = false,
+        //        _result returns the result value of the query
+        $_results,
+        //        _count counts when is any result or not
+        $_count     = 0;
+    //      This private constructor creates the PDO object when the Class DB is called
     private function __construct(){
         try{
             $this->_pdo = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db_name').''
@@ -24,12 +32,14 @@ class DB{
             die($e->getMessage());
         }
     }
+    //    Returns the instance of DB class
     public static function getInstance(){
             if (!isset(self::$_instance)){
                 self::$_instance = new DB();
             }
             return self::$_instance;
     }
+    //    Executing the query and returning the attributes as an object
     public function query($sql, $params = []){
         $this->_error = false;
         if ($this->_query = $this->_pdo->prepare($sql)){
@@ -49,9 +59,11 @@ class DB{
         }
         return $this;
     }
+    //    Returning the error
     public function error(){
         return $this->_error;
     }
+    //    This method helps exicutind a query depens on the $action ['inset', 'update', 'delete', 'select']
     public function action($action, $table, $where = []){
         if (count($where) === 3){
             $operators = ['=', '>', '<', '>=', '<='];
@@ -68,12 +80,16 @@ class DB{
         }
         return false;
     }
+    //    Using this method get(), returns records from database using Action() method,
+    //      but is just for returning records $table = 'users', $where = ['username', '=', 'userns_username']
     public function get($table, $where){
         return $this->action('SELECT * ', $table, $where);
     }
+    //    This method is for deleting a specific record $where = ['id', '=','100']
     public function delete($table, $where){
         return $this->action('DELETE ', $table, $where);
     }
+    //    This method insert() is for inserting data on a specific table "$table" $fields = ['name' => 'First name', 'last_name' => 'last Name']
     public function insert($table, $fields = []){
        $keys = array_keys($fields);
         $values = '';
@@ -91,6 +107,7 @@ class DB{
         }
         return false;
     }
+    //    This method update() is for updating a record on a specific table "$table" and specify $id $fields = ['name' => 'First name', 'last_name' => 'last Name']
     public function update($table, $id, $fields = []){
         $set = '';
         $x = 1;
@@ -109,30 +126,38 @@ class DB{
         }
         return false;
     }
+    //        Returns the private variable results
     public function results(){
         return $this->_results;
     }
+    //    Selects all rows form a specific table $table = users => SELECT * FROM 'users'
     public function showAll($table){
         return $this->query("SELECT * FROM {$table}");
     }
+    //    Returns the first record form the result method [0] first index
     public function first(){
             return $this->results()[0];
     }
+    //    Returns the second record form the result method [1] second index
     public function second(){
 
             return $this->results()[1];
 
     }
+    //    Returns the third record form the result method [2] third index
     public function third(){
             return $this->results()[2];
     }
+    //    Returns the forth record form the result method [3] forth index
     public function forth(){
         return $this->results()[3];
     }
+    //    Returns the fifth record form the result method [4] fifth index
     public function fifth(){
         return $this->results()[4];
 
     }
+    //    Returns the _count private variable
     public function count(){
         return $this->_count;
     }

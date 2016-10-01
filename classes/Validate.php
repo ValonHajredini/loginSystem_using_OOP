@@ -7,16 +7,20 @@
  * Time: 1:33 PM
  */
 class Validate {
+            //  private variable for checking if the validation is passed
     private $_past      = false,
+            //  Holds the validation errors
             $_errors    = [],
+            //  Holds the database instance
             $_db        = null;
+    //  instansiated the database class DB
     public function __construct(){
         $this->_db = DB::getInstance();
     }
+    //  Checks the inputs for the validation if it passed or not
     public function check($sources, $items = []){
         foreach ($items as $item => $rules){
             foreach ($rules as $rule => $rule_value){
-//                echo "{$item} {$rule} must be {$rule_value}<br>";
                 $value = trim($sources[$item]);
                 $item = escape($item);
                 if ($rule === 'required' && empty($value)){
@@ -62,12 +66,15 @@ class Validate {
         }
         return $this;
     }
+    //  Adds the error to the arrau variable _error
     private function addError($error){
         $this->_errors[] = $error;
     }
+    //  Returns all errors on the array _errors
     public function errors(){
         return $this->_errors;
     }
+    //  When no errors returns tru for passing the validation
     public function passed(){
         if(!$this->_errors){
             return true;

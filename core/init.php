@@ -5,7 +5,9 @@
  * Date: 9/28/2016
  * Time: 1:34 PM
  */
+//  Starts the session for the intire app
 session_start();
+//  Globar config variable for (mysql database credential, remember cookie, session name and token )
 $GLOBALS['config'] = [
     'mysql'     => [
         'host'          => '127.0.0.1',
@@ -22,13 +24,14 @@ $GLOBALS['config'] = [
         'token_name'    => 'token'
     ]
 ];
+//  Auto include all classes on the classes directory
 spl_autoload_register(function ($class){
         require_once 'classes/'.$class.'.php';
 });
+//  Required the sanitize class on database credential
 require_once 'functiones/Sanitize.php';
+//  Checkes if the query exists
 if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('session/session_name'))){
-//echo 'User mast be logt in with cookie';
-//    echo $_COOKIE[Config::get('remember/cookie_name')];
     $db = DB::getInstance();
     $hashCheck = $db->get('users_session', ['hash', '=',$_COOKIE[Config::get('remember/cookie_name')]]);
     if($hashCheck->count()){
@@ -38,7 +41,6 @@ if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Confi
     }
 
 }
-class init
-{
+class init{
 
 }

@@ -7,6 +7,7 @@
  * Time: 1:31 PM
  */
 class Redirect{
+//    Redirect to a specific page or returns a 404 header
     public static function to($location = null){
         if($location){
             if (is_numeric($location)){
